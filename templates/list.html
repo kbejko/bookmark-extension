@@ -1,0 +1,7 @@
+<section class="bookmarklist-container bookmarklist-container--blue-dark">
+  <ul class="bookmarklist__sublist">
+    <li *ngFor="#bookmark of bookmarks; #i = index">
+      <bookmark [bookmark]="bookmark" (bookmarkChanged)="setBookmarks()" (bookmarkDeleted)="deleteBookmark(bookmark, i)"></bookmark>
+    </li>
+  </ul>
+</section>

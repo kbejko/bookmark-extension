@@ -1,0 +1,8 @@
+{
+  "manifest_version": 2,
+  "name": "Bookmark Extension",
+  "short_name": "All your bookmarks in new tab",
+  "description": "This is another!!! bookmark extension",
+  "version": "1.0.0",
+  "author": "Klajdi Bejko @klazhdi"
+}
