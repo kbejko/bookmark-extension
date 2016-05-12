@@ -13,7 +13,7 @@ import { ListService } from './list.service'
 
 export class ListComponent implements OnInit {
 
-  public bookmarks: Object;
+  public bookmarks: Array< Object >;
 
   constructor( private listService: ListService ) {}
 
@@ -23,6 +23,15 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.getBookmarkLists();
+  }
+
+  setList() {
+    this.listService.setBookmarks( this.bookmarks );
+  }
+
+  deleteBookmark( bookmark: Bookmark, i: number ) {
+    this.bookmarks.splice( i, 1);
+    this.setList();
   }
 
 }

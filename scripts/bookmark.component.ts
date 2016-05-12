@@ -1,4 +1,6 @@
 import { Component } from 'angular2/core';
+import { Output } from 'angular2/core';
+import { EventEmitter } from 'angular2/core';
 
 export interface Bookmark {
   name: string,
@@ -13,11 +15,19 @@ export interface Bookmark {
 
 export class BookmarkComponent {
 
-  bookmark: Bookmark = {
-    name: 'SitePoint',
-    url: 'https://sitepoint.com'
+  bookmark: Bookmark;
+  submitted = false;
+
+  @Output() bookmarkChanged: EventEmitter<any> = new EventEmitter();
+  @Output() bookmarkDeleted: EventEmitter<any> = new EventEmitter();
+
+  onSubmit( bookmark: Bookmark ) {
+    this.submitted = false;
+    this.bookmarkChanged.emit( bookmark );
   }
 
-  submitted = false
+  onDelete( bookmark: Bookmark ) {
+    this.bookmarkDeleted.emit( bookmark );
+  }
 
 }

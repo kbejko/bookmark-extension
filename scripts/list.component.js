@@ -35,6 +35,13 @@ System.register(['angular2/core', './bookmark.component', './list.service'], fun
                 ListComponent.prototype.ngOnInit = function () {
                     this.getBookmarkLists();
                 };
+                ListComponent.prototype.setList = function () {
+                    this.listService.setBookmarks(this.bookmarks);
+                };
+                ListComponent.prototype.deleteBookmark = function (bookmark, i) {
+                    this.bookmarks.splice(i, 1);
+                    this.setList();
+                };
                 ListComponent = __decorate([
                     core_1.Component({
                         selector: 'bookmark-list',

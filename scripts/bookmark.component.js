@@ -10,22 +10,37 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, core_2, core_3;
     var BookmarkComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+                core_2 = core_1_1;
+                core_3 = core_1_1;
             }],
         execute: function() {
             BookmarkComponent = (function () {
                 function BookmarkComponent() {
-                    this.bookmark = {
-                        name: 'SitePoint',
-                        url: 'https://sitepoint.com'
-                    };
                     this.submitted = false;
+                    this.bookmarkChanged = new core_3.EventEmitter();
+                    this.bookmarkDeleted = new core_3.EventEmitter();
                 }
+                BookmarkComponent.prototype.onSubmit = function (bookmark) {
+                    this.submitted = false;
+                    this.bookmarkChanged.emit(bookmark);
+                };
+                BookmarkComponent.prototype.onDelete = function (bookmark) {
+                    this.bookmarkDeleted.emit(bookmark);
+                };
+                __decorate([
+                    core_2.Output(), 
+                    __metadata('design:type', core_3.EventEmitter)
+                ], BookmarkComponent.prototype, "bookmarkChanged", void 0);
+                __decorate([
+                    core_2.Output(), 
+                    __metadata('design:type', core_3.EventEmitter)
+                ], BookmarkComponent.prototype, "bookmarkDeleted", void 0);
                 BookmarkComponent = __decorate([
                     core_1.Component({
                         selector: 'bookmark',
